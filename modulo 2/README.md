@@ -1,6 +1,6 @@
 <div class="hero-image">
     <div class="frame">
-        <img src="assets/Yasmim Lima.png" alt="Banner do Módulo 2 - Fundamentos de Controle de Versão">
+        <img src="assets/yasmimlima.png" alt="Banner do Módulo 2 - Fundamentos de Controle de Versão">
     </div>
 </div>
 
