@@ -1,98 +1,127 @@
-# Módulo 3 — Introdução à SQL
+# Módulo 3 - Introdução à SQL
 
-Ciclo básico Lighthouse | Instrutora: Corina Bachmann (Team Lead Analytics Engineer)
+Anotações da aula sobre os fundamentos de SQL. Instrutora: Corina Bachmann (Team Lead Analytics Engineer na Indicium).
 
-## 📌 Sobre o módulo
+## O que aprendi
 
-Este módulo cobre os fundamentos da linguagem SQL, com prática usando o banco de dados **Northwind** (importadora fictícia de alimentos), simulando um cenário de onboarding como Analista Júnior de Dados.
+**O que é SQL**
 
-### Tópicos abordados
-- O que é SQL e para que serve (DDL, DML, DCL, DTL)
-- Modelo relacional e tipos de dados
-- Consultas básicas (`SELECT`, `DISTINCT`, `ORDER BY`, `LIMIT`)
-- Filtros e operadores (comparação, lógicos, aritméticos) com `WHERE`
-- Funções de agregação (`SUM`, `COUNT`, `AVG`, `MAX`, `MIN`) e `GROUP BY`
-- Junção de tabelas (`INNER`, `LEFT`, `RIGHT`, `FULL`, `CROSS JOIN`)
-- União de tabelas (`UNION` e `UNION ALL`)
+SQL (Structured Query Language) é a linguagem que a gente usa pra conversar com um banco de dados. Ela serve basicamente pra três coisas: consultar dados (buscar informação com filtros), manipular tabelas (inserir, atualizar, apagar) e gerenciar o banco (criar estrutura, controlar permissões).
 
-### Ferramenta utilizada
-Conexão via **DBeaver** com o banco Northwind (Postgres na nuvem ou SQLite local).
+O fluxo que ficou mais claro pra mim foi esse: eu (usuário) mando uma pergunta em SQL pra aplicação, a aplicação executa isso no banco de dados, e o banco devolve a informação de volta pra mim. É tipo pedir uma informação num balcão e alguém ir lá no arquivo buscar pra mim.
 
----
+**Modelo relacional**
 
-## 🗂️ Estrutura das queries (`script.sql`)
+Foi criado nos anos 1970 (Edgar Frank Codd) e está em praticamente todo sistema empresarial hoje. A ideia central é que os dados ficam organizados em tabelas, e essas tabelas podem se relacionar entre si através de chaves (tipo um ID que aparece em mais de uma tabela).
 
-### Task A — Nome e preço de todos os produtos
+Cada linha de uma tabela é um **registro**, cada coluna é um **campo**, e cada coluna tem um tipo de dado específico (texto, número, data, etc).
 
-```sql
--- Nome e preço de todos os produtos
-select ProductName, UnitPrice
-from Product
-order by UnitPrice desc;
-```
+**Os "4 subconjuntos" da SQL**
 
-### Task B — Produtos com mais de 20 unidades em estoque e custam mais de 50 reais
+Isso eu não sabia e achei interessante — SQL não é só o `SELECT`, ela se divide em:
+
+- **DDL** (Definição de Dados): `CREATE`, `ALTER`, `DROP` → cria/altera/apaga tabelas
+- **DML** (Manipulação de Dados): `SELECT`, `INSERT`, `UPDATE`, `DELETE` → é o que a gente mais usa no dia a dia
+- **DCL** (Controle de Dados): `GRANT`, `REVOKE` → controla permissão de acesso
+- **DTL** (Controle de Transações): `BEGIN TRANSACTION`, `COMMIT`, `ROLLBACK`
+
+## SELECT básico
+
+A estrutura mais simples é: eu escolho quais colunas eu quero e de qual tabela.
 
 ```sql
--- Produtos com mais de 20 unidades no estoque,
--- e custam mais de 50 reais
-select ProductName, UnitPrice, UnitsInStock
-from Product p
-where p.UnitsInStock > 20
-and p.UnitPrice > 50;
+select nome_coluna from nome_tabela
 ```
 
-### Task C — Valor total vendido por produto e valor médio dos pedidos
+Se eu quiser todas as colunas, uso `*`. Se eu quiser só valores únicos (sem repetição), uso `distinct`.
 
 ```sql
--- Valor total vendido por produto
-select ProductId, sum(UnitPrice * Quantity) as valorTotal
-from OrderDetail
-group by ProductId
-order by valorTotal;
-
--- Valor médio dos pedidos
-select avg(UnitPrice * Quantity) as valorMedio
-from OrderDetail;
+select * from clientes
+select distinct Name from clientes
 ```
 
-### Task D — Produtos com o nome da categoria (join)
+## ORDER BY e LIMIT
+
+`ORDER BY` ordena o resultado (por padrão do menor pro maior, ou uso `desc` pra inverter). `LIMIT` corta quantas linhas eu quero ver. Uma coisa importante que a professora reforçou: **a ordem das cláusulas importa** — não dá pra escrever `LIMIT` antes de `ORDER BY`, por exemplo.
 
 ```sql
--- Product + Category
-select Product.ProductName, Product.CategoryId, Category.CategoryName
-from Product
-inner join Category
-on Product.CategoryId = Category.Id
-order by Category.CategoryName;
+select *
+from clientes
+order by cod_cliente desc
+limit 2
 ```
 
-### Atividade final — Top 3 categorias que mais geraram receita
+## WHERE e os operadores
+
+`WHERE` é o filtro da consulta. Aprendi 3 tipos de operadores:
+
+- **Comparação**: `=`, `>`, `<`, `>=`, `<=`, `<>` (diferente)
+- **Lógicos**: `AND`, `OR`, `IN`, `NOT`, `BETWEEN`, `LIKE`
+- **Aritméticos**: `+`, `-`, `*`, `/` (dá pra fazer conta direto na query, tipo calcular preço total)
+
+Detalhe que anotei pra não esquecer: **texto e data usam aspas simples** (`'PF'`), **número não usa aspas** (`id = 10`).
 
 ```sql
--- 3 categorias de produtos que mais geraram receita
-select c.CategoryName, sum(od.UnitPrice * od.Quantity) as valorTotal
-from OrderDetail od
-inner join Product p
-on od.ProductId = p.Id
-inner join Category c
-on p.CategoryId = c.Id
-group by c.CategoryName
-order by valorTotal desc
-limit 3;
+select *
+from clientes
+where tipo_cliente = 'PF'
+
+select primeiro_nome, cod_cliente, uf
+from clientes
+where uf in ('PR', 'SP', 'MG')
+
+select primeiro_nome, cod_cliente, uf
+from clientes
+where data_cadastro between '01/01/2024' and '01/01/2025'
 ```
 
----
+## Funções de agregação
 
-## ▶️ Como executar
+Servem pra resumir os dados em vez de mostrar linha por linha. Geralmente uso junto com `GROUP BY` pra agrupar por alguma coluna.
 
-1. Instale o [DBeaver](https://dbeaver.io/)
-2. Conecte-se ao banco Northwind (Postgres na nuvem ou SQLite local)
-3. Abra o arquivo [`script.sql`](./script.sql) e execute as queries na ordem desejada
+- `SUM` → soma
+- `COUNT` → conta quantos registros (ignora nulos, exceto com `*`)
+- `AVG` → calcula média
+- `MAX` / `MIN` → maior e menor valor
 
----
+```sql
+select productid, sum(quantity)
+from orders
+group by productid
+```
 
-## 📚 Referência rápida — Ordem de uma consulta SQL
+## JOIN — juntando tabelas
+
+Isso foi a parte que exigiu mais atenção. `JOIN` serve pra combinar colunas de tabelas diferentes que têm alguma relação (tipo `clientes` e `pedidos`).
+
+- **INNER JOIN**: só traz o que existe nas duas tabelas
+- **LEFT JOIN**: traz tudo da tabela da esquerda, mesmo sem correspondência (vira `NULL`)
+- **RIGHT JOIN**: o mesmo, só que priorizando a tabela da direita
+- **FULL JOIN**: traz tudo dos dois lados
+- **CROSS JOIN**: combina todas as linhas de uma tabela com todas da outra (produto cartesiano)
+
+```sql
+select
+  clientes.Nome,
+  pedidos.Data
+from pedidos
+inner join clientes
+on pedidos.ClienteID = clientes.ID
+```
+
+## UNION — empilhando resultados
+
+Diferente do `JOIN` (que junta colunas), o `UNION` empilha linhas de duas consultas diferentes, desde que tenham o mesmo número de colunas. `UNION` remove duplicados, `UNION ALL` mantém tudo.
+
+```sql
+select * from pedidos_1
+union
+select * from pedidos_2
+```
+
+## Ordem completa de uma query
+
+Ficou faltando eu decorar a ordem certa das cláusulas, então anotei aqui pra consultar depois:
 
 ```sql
 SELECT coluna_1, coluna_2, ...
@@ -104,3 +133,64 @@ HAVING condições (agregadas)
 ORDER BY coluna_1, coluna_2 desc, ...
 LIMIT número_de_linhas
 ```
+
+## Exercícios que fiz
+
+A aula usou o banco **Northwind** (importadora fictícia de alimentos) com um cenário de onboarding: eu como analista júnior precisando responder perguntas da CEO. Separei minhas queries em [`script.sql`](./script.sql).
+
+**Task A** — nome e preço de todos os produtos:
+```sql
+select ProductName, UnitPrice
+from Product
+order by UnitPrice desc;
+```
+
+**Task B** — produtos com mais de 20 unidades em estoque e que custam mais de 50 reais:
+```sql
+select ProductName, UnitPrice, UnitsInStock
+from Product p
+where p.UnitsInStock > 20
+and p.UnitPrice > 50;
+```
+
+**Task C** — valor total vendido por produto e valor médio dos pedidos:
+```sql
+select ProductId, sum(UnitPrice * Quantity) as valorTotal
+from OrderDetail
+group by ProductId
+order by valorTotal;
+
+select avg(UnitPrice * Quantity) as valorMedio
+from OrderDetail;
+```
+
+**Task D** — trocar o ID da categoria pelo nome (precisei de um `JOIN` aqui):
+```sql
+select Product.ProductName, Product.CategoryId, Category.CategoryName
+from Product
+inner join Category
+on Product.CategoryId = Category.Id
+order by Category.CategoryName;
+```
+
+## Desafio final: top 3 categorias que mais geraram receita
+
+Esse foi o exercício que juntou tudo (`JOIN` duplo + `GROUP BY` + `ORDER BY` + `LIMIT`), achei o mais desafiador da aula:
+
+```sql
+select c.CategoryName, sum(od.UnitPrice * od.Quantity) as valorTotal
+from OrderDetail od
+inner join Product p
+on od.ProductId = p.Id
+inner join Category c
+on p.CategoryId = c.Id
+group by c.CategoryName
+order by valorTotal desc
+limit 3;
+```
+
+## Pra lembrar depois
+- A ordem das cláusulas SQL importa (`SELECT` → `FROM` → `JOIN` → `WHERE` → `GROUP BY` → `HAVING` → `ORDER BY` → `LIMIT`)
+- Texto/data usa aspas simples, número não usa
+- `JOIN` combina colunas, `UNION` empilha linhas
+- Nem todo banco de dados suporta `FULL JOIN`
