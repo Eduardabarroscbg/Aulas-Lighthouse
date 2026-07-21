@@ -145,8 +145,6 @@ Separei os códigos dessa aula na pasta [`exemplos/`](./exemplos):
 
 A professora passou um desafio pra misturar `input`, f-string e `if/elif/else`: pedir nome, cidade e idade da pessoa, e verificar se ela pode entrar numa montanha-russa (com base na idade).
 
-Ficou assim: [`desafio_montanha_russa.py`](./exemplos/desafio_montanha_russa.py)
-
 ```python
 nome = input('Digite seu nome: ')
 cidade = input('Em qual cidade você mora? ')
