@@ -1,6 +1,6 @@
 # Lighthouse - Anotações do Ciclo Preparatório
 
-Esse repositório reúne minhas anotações e exercícios das aulas do **Ciclo Preparatório do Lighthouse**,  [Indicium](https://indicium.ai/). 
+Esse repositório reúne minhas anotações e exercícios das aulas do **Ciclo Preparatório do Lighthouse**.
 
 Cada pasta desse repositório corresponde a um módulo do Ciclo Preparatório, com as anotações que fiz durante a aula, os exercícios praticados e os arquivos de apoio que usei.
 
