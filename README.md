@@ -1,3 +1,9 @@
+<div class="hero-image">
+    <div class="frame">
+        <img src="assets/cursolighthouse.png" alt="banner da indicium">
+    </div>
+</div>
+
 # Lighthouse - Anotações do Ciclo Preparatório
 
 Esse repositório reúne minhas anotações e exercícios das aulas do **Ciclo Preparatório do Lighthouse**.
