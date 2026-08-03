@@ -257,13 +257,13 @@ for cliente in clientes:
 
 ## Exemplos que fiz
 Separei os códigos dessa aula:
-- `variaveis.py`
-- `condicional.py`
-- `loops.py`
-- `funcoes.py`
-- `listas.py`
-- `dicionarios.py`
-- `api_requests.py`
+- [variaveis.py](./variaveis.py)
+- [condicional.py](./condicional.py)
+- [loops.py](./loops.py)
+- [funcoes.py](./funcoes.py)
+- [listas.py](./listas.py)
+- [dicionarios.py](./dicionarios.py)
+- [api_requests.py](./api_requests.py)
 
 ## Desafio que fiz misturando os conceitos
 
