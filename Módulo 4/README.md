@@ -1,4 +1,4 @@
-﻿<div class="hero-image">
+<div class="hero-image">
     <div class="frame">
         <img src="assets/duartejunior.png" alt="Banner do Módulo 4 - Introdução a Python">
     </div>
@@ -31,6 +31,8 @@ pip install pandas
 **O que é Python**
 
 Python é uma linguagem interpretada, orientada a objetos e de alto nível, com tipagem dinâmica. Isso facilita muito o desenvolvimento rápido de aplicações e também serve como "cola" pra conectar outros componentes. Os pontos que mais me chamaram atenção pra aprender Python: fácil aprendizado, é meio que o "inglês da programação", desenvolvimento rápido e é gratuita.
+
+Um ponto que o instrutor bateu bastante: Python **enfatiza a leitura**. As boas práticas pedem nomes semânticos (de variável, função, classe) que descrevam de verdade o que aquilo faz — diferente de outras linguagens onde é comum abreviar tudo. Isso facilita muito a manutenção do código no futuro.
 
 **Recapitulando: o que já tínhamos visto**
 
@@ -66,6 +68,8 @@ Antes de entrar em conteúdo novo, revisamos rapidamente: `print("Hello World!")
 - **Identity**: `is`, `is not`
 - **Membership**: `in`, `not in`
 
+Detalhe que anotei sobre os aritméticos: em soma, subtração e multiplicação, se os dois números forem `int` o resultado é `int`, mas se pelo menos um for `float` o resultado já vira `float`. Já a divisão normal (`/`) **sempre** retorna `float`, mesmo dividindo 4 por 2. Pra ter resultado inteiro de verdade, uso a divisão inteira (`//`), que corta a parte decimal sem arredondar.
+
 📝 Dever de casa que ficou passado: pesquisar sobre **operator precedence** (ordem de prioridade entre os operadores quando aparecem juntos numa mesma expressão).
 
 **Recapitulando: tipos de sequência**
@@ -74,9 +78,15 @@ Antes de entrar em conteúdo novo, revisamos rapidamente: `print("Hello World!")
 - **Lists `[]`**: ordenadas, mutáveis, permitem duplicatas. Acesso: `list[i]` ou `list[range]`. Métodos: `append()`, `count()`, `index()`, `insert()`, `pop()`, `remove()`, `sort()`
 - **Dicts `{k: v}`**: guardam dados em chave/valor, mutáveis e não permitem chaves duplicadas. Acesso: `dict[key]` ou `dict.get(key)`. Método: `pop(keyname)`
 
+Duas coisas pra não esquecer:
+- Acessar uma posição que não existe numa lista ou tupla (tipo `lista[11]` numa lista de 10 itens) gera um `IndexError` — sempre conferir o tamanho antes.
+- `dict[key]` quebra com erro se a chave não existir, mas `dict.get(key, valor_padrao)` não quebra: se a chave não existir, ele simplesmente retorna o valor padrão que eu definir (ou `None`, se eu não definir nada).
+
 **Recapitulando: type casting**
 
 `int()`, `float()`, `str()`, `list()` — pra converter um tipo de dado em outro.
+
+Reparei que `int()` **trunca** o número decimal (corta a parte depois da vírgula), não arredonda — `int(4.9)` vira `4`, não `5`. E `float()` só converte string pra decimal se a string for numérica de verdade (tipo `"4.5"`); se tiver algum caractere de texto no meio, dá erro.
 
 **Recapitulando: condicionais e loops**
 
@@ -181,13 +191,21 @@ Ficou claro que a escolha depende do tamanho dos dados:
 | Facilidade de uso | Excelente | Moderada | Boa |
 | Performance | Moderada | Alta (big data) | Alta |
 | Escalabilidade | Baixa | Excelente | Boa |
-| Paralelismo | Baixo | Alto | Alto |
+| Paralelismo | Baixo (single thread) | Alto | Alto |
+| Uso de memória | Menos eficiente (carrega tudo na RAM de uma vez) | Moderado | Mais eficiente |
+| Suporte da comunidade | Maior (biblioteca mais antiga) | Bastante conteúdo | Crescendo (é o mais novo) |
+| Capacidade de integração | Boa | Boa | Boa (um pouco mais trabalhosa) |
 
-Frase que resume bem a diferença entre modo eager e lazy: rodar em modo eager é como "cozinhar conforme vai fazendo", enquanto o modo lazy é como planejar a receita toda antes, com tudo já otimizado. No benchmark mostrado em aula (2,5 milhões de linhas), Polars (tanto lazy quanto eager) foi o mais rápido, seguido de PySpark, com Pandas bem atrás dos três.
+Frase que resume bem a diferença entre modo eager e lazy: rodar em modo eager é como "cozinhar conforme vai fazendo", enquanto o modo lazy é como planejar a receita toda antes, com tudo já otimizado. No benchmark mostrado em aula (2,5 milhões de linhas), Polars (tanto lazy quanto eager) foi o mais rápido, seguido de PySpark, com Pandas bem atrás dos três — justamente por rodar em single thread e carregar tudo na memória de uma vez.
 
 **Debugging**
 
-Usamos o debugger do VSCode pra achar um bug intencional numa função de cálculo de média de idades — o erro estava relacionado a um valor vindo como string dentro de uma lista de números. Serviu pra treinar o hábito de rodar passo a passo e inspecionar variáveis em vez de só ler o código.
+Vimos dois cenários de bug intencional pra praticar o debugger do VSCode:
+
+1. Função de cálculo de média de idades recebendo uma **lista vazia** — isso gerava um erro de divisão por zero. A correção foi simples: um `if not lista: return 0` no início da função, pra tratar esse caso antes de chegar na divisão.
+2. A mesma função recebendo um valor como **string** dentro de uma lista de números — o erro aparecia na hora de somar (`int` + `str` não funciona). A correção foi converter o valor pra `int` antes de somar.
+
+Em ambos os casos, usamos breakpoints e fomos rodando passo a passo, inspecionando o valor de cada variável no console de debug — bem mais rápido do que tentar achar o erro só de olhar o código.
 
 **Classes**
 
@@ -247,4 +265,6 @@ Pasta [`aula 2`](./aula%202):
 - Herança usa `super().__init__()` pra reaproveitar o `__init__` da classe base
 - Antes de codar, vale a pena escrever o pseudocódigo
 - Separar funções em módulos (`utils.py`) deixa o projeto mais organizado e testável
+- `dict.get(key, padrao)` é mais seguro que `dict[key]` quando a chave pode não existir
+- `int()` trunca, não arredonda — cuidado ao converter float pra int
 - Dever de casa pendente: pesquisar sobre operator precedence
