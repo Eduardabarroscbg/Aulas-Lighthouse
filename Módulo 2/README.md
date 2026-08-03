@@ -264,6 +264,7 @@ Separei os códigos dessa aula:
 - [listas.py](./listas.py)
 - [dicionarios.py](./dicionarios.py)
 - [api_requests.py](./api_requests.py)
+- [desafio_montanha_russa.py](./desafio_montanha_russa.py)
 
 ## Desafio que fiz misturando os conceitos
 
