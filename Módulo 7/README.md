@@ -1,14 +1,10 @@
-<<<<<<< HEAD
-# Módulo 7 - Fundamentos de Bando de Dados e Cloud
-=======
->>>>>>> b50b28a (módulo 7)
 <div class="hero-image">
     <div class="frame">
         <img src="assets/brunoschaden.png" alt="Fundamentos da Computação em Nuvem">
     </div>
 </div>
 
-# Módulo Cloud - Fundamentos da Computação em Nuvem
+# Módulo 7 - Fundamentos da Computação em Nuvem
 Anotações da aula sobre os fundamentos de Cloud Computing: definição técnica, características essenciais, modelos de serviço e de implantação, e como isso se aplica no dia a dia de quem trabalha com dados. Instrutor: Bruno Schaden, Team Lead Analytics Engineer na Indicium.
 
 ## O que já era esperado como pré-requisito
@@ -115,8 +111,4 @@ Uma região não é "um prédio só": é uma estrutura geográfica formada por v
 - Provisionamento, conectividade, controle de acesso (IAM + acesso mínimo), monitoramento e orquestração são as 5 vantagens operacionais da cloud frente ao on-premise
 - Escolher região é um trade-off entre preço, latência e segurança/regulação — não é só "pegar a mais barata"
 - Zonas existem pra isolar falhas: uma zona cair não deve derrubar a aplicação inteira, já que elas ficam interligadas por rede de alta velocidade
-<<<<<<< HEAD
 - AWS lidera em market share (~28%), mas Azure tem mais regiões — cada provedor tem pontos fortes diferentes
-=======
-- AWS lidera em market share (~28%), mas Azure tem mais regiões — cada provedor tem pontos fortes diferentes
->>>>>>> b50b28a (módulo 7)
