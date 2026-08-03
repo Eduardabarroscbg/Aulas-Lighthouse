@@ -46,6 +46,25 @@ idade = 53              # int (número inteiro)
 altura = 1.80            # float (número com decimal)
 ```
 
+**F-strings**
+
+Uma coisa que achei bem prática: dá pra misturar texto com variável dentro de uma string só, colocando um `f` antes das aspas e a variável entre chaves.
+
+```python
+nome = "Yasmim"
+idade = 24
+print(f"Meu nome é {nome} e minha idade é {idade}")
+```
+
+**Descobrindo o tipo de uma variável**
+
+O Python tem uma função pronta chamada `type()` que mostra o tipo de qualquer variável. Ajuda bastante quando um erro reclama de tipo errado.
+
+```python
+type(nome)   # <class 'str'>
+type(idade)  # <class 'int'>
+```
+
 ## If / Else (lógica de decisão)
 
 O computador só faz uma coisa se a condição for verdadeira, senão ele faz outra.
@@ -55,6 +74,20 @@ if chuva == True:
     print("levar guarda chuvas")
 else:  # ou if chuva == False:
     print("sair de boa")
+```
+
+**E quando tem mais de duas opções? Usa o elif**
+
+`elif` é tipo um "senão, se" no meio do caminho entre o if e o else. O importante é lembrar que assim que uma condição bate, o Python ignora todas as outras.
+
+```python
+nota = 6
+if nota >= 7:
+    print("aprovado")
+elif nota == 6:
+    print("ficou na média, estude mais")
+else:
+    print("reprovado")
 ```
 
 ## For e While (loops)
@@ -78,6 +111,10 @@ while i != 11:
     i = i + 1
 ```
 
+**Cuidado com loop infinito**
+
+No `while`, se eu esquecer de incrementar a variável de controle, o código fica preso rodando pra sempre e pode acabar consumindo a memória do computador. Sempre conferir se a condição realmente vai parar em algum momento.
+
 ## Funções
 
 A ideia é não ficar repetindo código (isso tem até nome: princípio **DRY** - Don't Repeat Yourself). Eu junto um bloco de código dentro de uma função com nome, e só chamo ela quando precisar.
@@ -94,6 +131,90 @@ def fazer_cafe(tipo_cafe, quantidade_agua, acucar):
 fazer_cafe("café expresso", 50, 1)
 fazer_cafe("café coado", 200, 2)
 ```
+
+**Parâmetro com valor padrão**
+
+Dá pra deixar um parâmetro opcional, com um valor padrão, caso eu esqueça (ou não precise) passar ele na hora de chamar a função.
+
+```python
+def media_aluno(nota1, nota2, aluno="desconhecido"):
+    media = (nota1 + nota2) / 2
+    print(f"A média de {aluno} é {media}")
+
+media_aluno(9, 10)            # usa "desconhecido"
+media_aluno(7, 8, "Catarina") # sobrescreve o padrão
+```
+
+## Listas
+
+Serve pra guardar vários valores numa variável só, sem precisar ficar criando nome_1, nome_2, nome_3... Cada item tem um índice, que sempre começa em **zero**.
+
+```python
+alunos = ["Maria", "Ana", "José", "Catarina"]
+
+print(alunos[0])  # Maria
+print(alunos[1])  # Ana
+
+for aluno in alunos:
+    print(aluno)
+```
+
+## Dicionários
+
+Diferente da lista, o dicionário guarda cada valor associado a uma chave (tipo um rótulo), então fica bem mais claro o que cada informação representa — em vez de só um monte de valores soltos.
+
+```python
+aluno = {
+    "nome": "Maria",
+    "nota": 10,
+    "curso": "Python"
+}
+
+print(aluno["nome"])     # Maria
+print(aluno.keys())      # todas as chaves
+print(aluno.values())    # todos os valores
+
+for chave, valor in aluno.items():
+    print(chave, valor)
+```
+
+## Erros, try/except e debugging
+
+Erro em programação é normal, não precisa entrar em pânico — o segredo é ler a mensagem com calma e entender o que ela tá dizendo.
+
+Pra evitar que um erro quebre o programa inteiro, dá pra usar `try` / `except`, e até escrever minha própria mensagem de erro:
+
+```python
+try:
+    numero = int(input("Digite um número inteiro: "))
+except:
+    print("Valor inválido, digite um número inteiro")
+```
+
+**Debugging no VS Code**
+
+Em vez de ficar espalhando `print()` em cada linha pra entender o que tá acontecendo (e depois esquecer de tirar todos), dá pra usar o debugger: coloco breakpoints (pontos de parada) no código e vou rodando linha por linha, vendo o valor de cada variável no momento exato. Bem mais organizado.
+
+## Notebook x Script
+
+Python pode rodar em dois ambientes diferentes:
+- **Notebook (.ipynb)** — tipo um caderno digital, dá pra rodar bloco por bloco, sem precisar seguir uma ordem fixa. Muito usado por cientista de dados pra testar coisa de forma interativa.
+- **Script (.py)** — roda tudo de cima pra baixo, direto. É o formato mais usado no "mundo real", tipo quando o código vai transformar dados de uma tabela crua pra uma tabela mais trabalhada.
+
+## Bibliotecas e consumindo uma API
+
+Biblioteca é um código que alguém já escreveu pra resolver um problema comum, e que dá pra importar em vez de reinventar a roda.
+
+```python
+import requests
+
+response = requests.get("https://alguma-api.com/usuarios")
+dados = response.json()
+```
+
+A explicação que ficou fácil de guardar: pensa num restaurante. O front-end é o cliente, o back-end é a cozinha, e a **API é o garçom** — o intermediário que busca a informação lá atrás e traz pra gente, sem expor os dados diretamente (por isso muita API pede token/autenticação).
+
+O retorno de uma API geralmente vem em **JSON**, que no fundo segue a mesma lógica de dicionário + lista que a gente já usa em Python (dicionário com uma lista dentro, lista com vários dicionários dentro...).
 
 ## Indentação
 
@@ -140,6 +261,9 @@ Separei os códigos dessa aula:
 - `condicional.py`
 - `loops.py`
 - `funcoes.py`
+- `listas.py`
+- `dicionarios.py`
+- `api_requests.py`
 
 ## Desafio que fiz misturando os conceitos
 
