@@ -6,7 +6,7 @@
 
 # Módulo 3 - Introdução à SQL
 
-Anotações da aula sobre os fundamentos de SQL. Instrutora: Corina Bachmann (Team Lead Analytics Engineer na Indicium).
+Anotações da aula sobre os fundamentos de SQL. Instrutora: Corina Bachmann (Team Lead Analytics Engineer na Indicium). Ela mesma contou que entrou na Indicium pelo próprio Lighthouse em 2024, numa transição de carreira, e foi ali que aprendeu praticamente tudo que sabe sobre dados hoje — o que dá uma motivada extra pra levar essa fase a sério.
 
 ## Ferramenta usada
 
@@ -85,14 +85,25 @@ from clientes
 where data_cadastro between '01/01/2024' and '01/01/2025'
 ```
 
+## Alias (AS) — renomeando colunas
+
+Outra coisa que anotei: quando eu faço um cálculo numa query (tipo multiplicar preço por quantidade), a coluna resultante vem sem nome ou com um nome feio. Pra isso existe o `as`, que renomeia a coluna no retorno — só cosmético, não muda o dado.
+
+```sql
+select
+  UnitPrice * Quantity as valorTotal
+from OrderDetail
+```
+
 ## Funções de agregação
 
 Servem pra resumir os dados em vez de mostrar linha por linha. Geralmente uso junto com `GROUP BY` pra agrupar por alguma coluna.
 
 - `SUM` → soma
 - `COUNT` → conta quantos registros (ignora nulos, exceto com `*`)
+- `COUNT DISTINCT` → conta só os valores distintos, ignorando repetidos
 - `AVG` → calcula média
-- `MAX` / `MIN` → maior e menor valor
+- `MAX` / `MIN` → maior e menor valor (funciona pra número, data e até texto)
 
 ```sql
 select productid, sum(quantity)
@@ -121,7 +132,7 @@ on pedidos.ClienteID = clientes.ID
 
 ## UNION — empilhando resultados
 
-Diferente do `JOIN` (que junta colunas), o `UNION` empilha linhas de duas consultas diferentes, desde que tenham o mesmo número de colunas. `UNION` remove duplicados, `UNION ALL` mantém tudo.
+Diferente do `JOIN` (que junta colunas), o `UNION` empilha linhas de duas consultas diferentes. Pra isso funcionar, as duas consultas precisam ter o mesmo número de colunas, com o mesmo nome e o mesmo tipo de dado. `UNION` remove duplicados, `UNION ALL` mantém tudo.
 
 ```sql
 select * from pedidos_1
@@ -183,8 +194,24 @@ on Product.CategoryId = Category.Id
 order by Category.CategoryName;
 ```
 
+**Task E** — as 3 categorias de produto que mais geraram receita (essa foi a mais desafiadora, precisei de dois `JOIN` em sequência: `OrderDetail` → `Product` → `Category`, porque o pedido só tem o ID do produto, e o nome da categoria só existe lá na tabela de categoria):
+```sql
+select
+  Category.CategoryName,
+  sum(OrderDetail.UnitPrice * OrderDetail.Quantity) as valorTotal
+from OrderDetail as OD
+inner join Product
+on OD.ProductId = Product.Id
+inner join Category
+on Product.CategoryId = Category.Id
+group by Category.CategoryName
+order by valorTotal desc
+limit 3;
+```
+
 ## Pra lembrar depois
 - A ordem das cláusulas SQL importa (`SELECT` → `FROM` → `JOIN` → `WHERE` → `GROUP BY` → `HAVING` → `ORDER BY` → `LIMIT`)
 - Texto/data usa aspas simples, número não usa
-- `JOIN` combina colunas, `UNION` empilha linhas
+- `JOIN` combina colunas, `UNION` empilha linhas (e as colunas do union precisam ter mesmo nome e tipo)
+- `AS` só renomeia a coluna no retorno, não altera o dado
 - Nem todo banco de dados suporta `FULL JOIN`
