@@ -5,7 +5,7 @@
 </div>
 
 # Módulo 7 - Fundamentos da Computação em Nuvem
-Anotações da aula sobre os fundamentos de Cloud Computing: definição técnica, características essenciais, modelos de serviço e de implantação, e como isso se aplica no dia a dia de quem trabalha com dados. Instrutor: Bruno Schaden, Team Lead Analytics Engineer na Indicium.
+Anotações da aula sobre os fundamentos de Cloud Computing: definição técnica, características essenciais, modelos de serviço e de implantação, e como isso se aplica no dia a dia de quem trabalha com dados. Instrutor: Bruno Schaden, Team Lead Analytics Engineer na Indicium (formado em Economia, mais de 3 anos de Indicium, já passou por projetos nas verticais financeira, saúde e transporte/logística).
 
 ## O que já era esperado como pré-requisito
 
@@ -37,7 +37,7 @@ Cloud é computação como utilidade — igual energia elétrica. Você não com
 |---|---|
 | **Autosserviço sob demanda** | Eu mesmo provisiono o que preciso (mais RAM, mais storage) sem precisar que alguém do provedor faça isso manualmente pra mim |
 | **Amplo acesso via rede** | Acesso de qualquer lugar com internet, independente de dispositivo ou plataforma |
-| **Agrupamento de recursos** | O provedor concentra os recursos (pool) e ajusta o provisionamento conforme a demanda de todos os clientes |
+| **Agrupamento de recursos** | O provedor concentra os recursos (pool) e ajusta o provisionamento conforme a demanda |
 | **Consumo medido de serviço** | Cobrança conforme o uso real — se aloco 10GB mas uso 4GB, pago pelos 4GB |
 | **Elasticidade rápida** | O recurso já está disponível, é só alocar — RAM/storage aumentam ou diminuem em segundos, sem trocar hardware fisicamente |
 
@@ -49,13 +49,13 @@ Cloud é computação como utilidade — igual energia elétrica. Você não com
 | **PaaS** (Platform as a Service) | Alugar uma cozinha industrial pronta — só chego e cozinho | Tudo até o runtime | Dados e aplicação |
 | **SaaS** (Software as a Service) | Pedir comida pelo app — só uso | Praticamente tudo | Só uso e configuro |
 
-Exemplos citados: **SaaS** → Google Apps, Facebook, YouTube, Salesforce. **PaaS** → Microsoft Azure, Google App Engine, Amazon SimpleDB/S3. **IaaS** → Amazon EC2, GoGrid, Flexiscale.
+Exemplos citados: **SaaS** → Google Apps, Facebook, YouTube, Salesforce (curiosidade: o Salesforce foi o grande expoente do modelo SaaS desde 1988, antes da Amazon vir e dominar o mercado com a AWS). **PaaS** → Microsoft Azure, Google App Engine, Amazon SimpleDB/S3. **IaaS** → Amazon EC2, GoGrid, Flexiscale.
 
 Comparando com **On-Premise** (minha máquina local, onde eu cuido de tudo — aplicação, dados, runtime, containers, SO, virtualização, servidor físico e rede), dá pra ver visualmente o quanto cada modelo tira responsabilidade de gerenciamento de mim e passa pro provedor.
 
 ## Os 4 modelos de implantação
 
-- **Pública** → Azure, AWS, GCP. Foco em velocidade, escala e catálogo de serviços. O provedor cuida de tudo, eu só pago pelo uso.
+- **Pública** → Azure, AWS, GCP. Foco em velocidade, escala e catálogo de serviços. O provedor cuida de tudo, eu pago um pouco mais pelo serviço, mas não preciso me preocupar com a infraestrutura.
 - **Privada** → infraestrutura minha, controle extremo, geralmente um sistema mais legado dentro do meu próprio escritório/data center. Faz sentido, por exemplo, quando há restrição legal de onde os dados podem ficar armazenados.
 - **Híbrida** → mistura de privada + pública. Uso a privada pra dados sensíveis (baixa latência, compliance) e a pública pra dados transacionais gerais que precisam de mais poder de processamento. Ferramentas citadas pra isso: Azure Stack, AWS Outposts e Anthos (do Google).
 - **Multicloud** → uso serviços específicos de mais de um provedor público ao mesmo tempo (ex: dados no GCP + data lake na AWS), pra aproveitar o que cada um tem de melhor. Aumenta a complexidade, mas pode compensar dependendo do modelo de negócio.
@@ -74,12 +74,12 @@ O Bruno listou 5 pilares de vantagem operacional: **Provisionamento, Conectivida
 
 O Bruno frisou que 95-96% do tempo a gente lida só com **clouds públicas** (AWS, Azure, GCP), então o foco foi nelas. Pra acessar os recursos de um provedor, quatro conceitos aparecem sempre: Conta, Regiões, Zonas e VPC.
 
-**Conta** → é o ambiente administrativo onde organizo tudo que tenho na cloud: usuários, grupos, assinaturas, departamentos, ambientes separados. É um acesso extremamente restrito, mas que enxerga e controla tudo — a analogia do Bruno foi "o presidente do teu serviço".
+**Conta** → é o ambiente administrativo onde organizo tudo que tenho na cloud: usuários, grupos, assinaturas, departamentos, ambientes separados. É um acesso extremamente restrito, mas que enxerga e controla tudo — a analogia do Bruno foi "o presidente/CEO do teu serviço".
 
 **Regiões** → localização geográfica onde o serviço fica hospedado. A escolha da região importa por três motivos:
 - **Preço** → regiões com data centers maiores custam menos. Exemplo citado: armazenar dados em São Paulo custava, na última verificação, quase o dobro do preço de armazenar no US East 1 (Virgínia).
 - **Latência** → quanto mais longe fisicamente a região, maior o tempo de resposta (o "lag"). Se a aplicação não depende de tempo real, isso pode não importar; se depende, é um fator decisivo na escolha entre, por exemplo, São Paulo e Virgínia.
-- **Segurança/regulação** → é preciso escolher bem onde os dados ficam. Riscos físicos existem (um desastre natural, uma manutenção que trava a região inteira) e, no caso do Brasil, há legislação que restringe o armazenamento de dados pessoais fora do país — o que pode tornar uma cloud privada local mais viável que uma pública no exterior, dependendo do caso.
+- **Segurança/regulação** → é preciso escolher bem onde os dados ficam. Riscos físicos existem (um desastre natural, uma manutenção que trava a região inteira — como o apagão da AWS US East 1 que derrubou boa parte da internet mundial) e, no caso do Brasil, há legislação que restringe o armazenamento de dados pessoais fora do país — o que pode tornar uma cloud privada local mais viável que uma pública no exterior, dependendo do caso.
 
 Uma região não é "um prédio só": é uma estrutura geográfica formada por vários data centers diferentes que se comunicam entre si. Os provedores usam códigos padronizados pra identificar cada uma (ex: `sa-east-1`, `us-east-1`, `eu-west-1`), o que já entrega de cara onde ela fica.
 
@@ -101,6 +101,8 @@ Uma região não é "um prédio só": é uma estrutura geográfica formada por v
 | OVHcloud | 19 | 23 | <1% |
 | DigitalOcean | 9 | 13 | <1% |
 | Linode | 31 | 31 | <1% |
+
+Curiosidade citada em aula: a Amazon apostou nesse modelo desde ~2004/2005 ("constroem o marketplace de vocês, hospedam na gente, a gente mantém"), o que ajudou a consolidar sua liderança de mercado até hoje.
 
 ## Pra lembrar depois
 
