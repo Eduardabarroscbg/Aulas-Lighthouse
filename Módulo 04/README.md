@@ -1,6 +1,6 @@
 <div class="hero-image">
     <div class="frame">
-        <img src="assets/duartejunior.png" alt="Banner do Módulo 4 - Introdução a Python">
+        <img src="../assets/duartejunior.png" alt="Banner do Módulo 4 - Introdução a Python">
     </div>
 </div>
 

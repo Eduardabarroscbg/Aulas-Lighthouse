@@ -1,6 +1,6 @@
 <div class="hero-image">
     <div class="frame">
-        <img src="assets/arthurcerqueira.png" alt="Banner do Módulo 8 - Fundamentos de engenharia de dados">
+        <img src="../assets/arthurcerqueira.png" alt="Banner do Módulo 8 - Fundamentos de engenharia de dados">
     </div>
 </div>
 

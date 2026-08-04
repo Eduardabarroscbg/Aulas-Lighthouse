@@ -1,6 +1,6 @@
 <div class="hero-image">
     <div class="frame">
-        <img src="assets/brunohenrique.png" alt="Fundamentos da Computação em Nuvem">
+        <img src="../assets/brunohenrique.png" alt="Fundamentos da Computação em Nuvem">
     </div>
 </div>
 

@@ -1,6 +1,6 @@
 <div class="hero-image">
     <div class="frame">
-        <img src="assets/mirtheskochschmitz.png" alt="Banner do Módulo 1 - Introdução ao Programa Lighthouse">
+        <img src="../assets/mirtheskochschmitz.png" alt="Banner do Módulo 1 - Introdução ao Programa Lighthouse">
     </div>
 </div>
 

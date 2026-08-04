@@ -1,6 +1,6 @@
 <div class="hero-image">
     <div class="frame">
-        <img src="assets/giuliaplatt.png" alt="Banner do Módulo 9 - Visão Geral de Projetos">
+        <img src="../assets/giuliaplatt.png" alt="Banner do Módulo 9 - Visão Geral de Projetos">
     </div>
 </div>
 

@@ -1,6 +1,6 @@
 <div class="hero-image">
     <div class="frame">
-        <img src="assets/larissapereira.png" alt="Banner do Módulo 10 - Soft Skills e a Preparação para Entrevistas">
+        <img src="../assets/larissapereira.png" alt="Banner do Módulo 10 - Soft Skills e a Preparação para Entrevistas">
     </div>
 </div>
 
