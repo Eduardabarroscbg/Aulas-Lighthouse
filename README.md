@@ -1,9 +1,10 @@
-<div class="hero-image">
-    <div class="frame">
-        <img src="assets/cursolighthouse.png" alt="banner da indicium">
-    </div>
-</div>
-[![Certificado](https://img.shields.io/badge/📜_Certificado-Ciclo%20B%C3%A1sico%20Lighthouse-2E86DE?style=for-the-badge)](./assets/certificado.png)
+<details>
+  <summary>
+    <img src="https://img.shields.io/badge/📜_Certificado-Ciclo%20B%C3%A1sico%20Lighthouse-2E86DE?style=for-the-badge" alt="Certificado">
+  </summary>
+  <br>
+  <img src="./assets/certificado.png" alt="Certificado Ciclo Básico Lighthouse" width="600">
+</details>
 
 # Lighthouse - Anotações do Ciclo Preparatório
 
