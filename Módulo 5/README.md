@@ -6,7 +6,7 @@
 
 # Módulo 5 - Fundamentos de Controle de Versão
 
-Anotações da aula sobre terminal, bash e controle de versão com Git. Instrutor: Luis Henrique (Luisinho), Data Engineer Manager na Indicium.
+Anotações da aula sobre terminal, bash e controle de versão com Git. Instrutor: Luis Henrique (Luisinho), Coordenador da área de Engenharia de Dados na Indicium (ex-aluno do Lighthouse em 2023).
 
 ## O que aprendi
 
@@ -25,11 +25,12 @@ Fluxo que ficou mais claro pra mim:
 Programa que emula terminal ($ ls) → Shell (interpreta o comando) → Kernel → Hardware
 ```
 
-Tem dois tipos de shell:
-- **CLI** (Command Line Interface) → baseado em linha de comando, preciso digitar tudo
-- **GUI** (Graphical User Interface) → interface gráfica, tipo o Windows Explorer
+Duas coisas que eu tava confundindo e que são diferentes:
 
-E no Linux o shell mais usado é o **BASH** (Bourne Again Shell), que é o padrão de login na maioria das distros (dá pra instalar no Windows também). No Windows já vem o Powershell e o Command Line.
+- **Formas de interface com o computador**: **CLI** (Command Line Interface, baseado em linha de comando) e **GUI** (Graphical User Interface, interface gráfica, tipo o Windows Explorer/drag and drop).
+- **Tipos de shell**, que variam de acordo com o sistema operacional: no Linux o mais usado é o **BASH** (Bourne Again Shell), padrão de login na maioria das distros (dá pra instalar no Windows também). No Windows já vem o Powershell e o Command Line.
+
+Por isso que, se eu vou trabalhar com infraestrutura (ex: subir uma VM na AWS/GCP), muito provavelmente vou acessar via CLI numa máquina Linux, e aí preciso saber Bash.
 
 ## Comandos básicos de terminal
 
@@ -42,11 +43,12 @@ ls --help               # ajuda do comando
 cd meu_projeto          # navega entre diretórios
 mkdir meu_projeto       # cria um diretório novo
 rmdir pasta_vazia       # remove diretório vazio e seguro
-rm arquivo.txt          # remove arquivo (cuidado, é permanente)
+rm arquivo.txt          # remove arquivo (cuidado, é permanente, não vai pra lixeira)
 rm -r pasta_com_arquivos # remove pasta que tem arquivo dentro
 cp origem.txt copia.txt # copia arquivo
 mv antigo.txt novo.txt  # move ou renomeia
 cat arquivo.txt         # mostra o conteúdo do arquivo
+nano arquivo.txt        # abre um editor de texto direto no terminal
 less arquivo.txt        # mostra com paginação (Q pra sair)
 grep "termo" arquivo.txt # filtra conteúdo com regex
 echo $nome              # exibe texto ou variável
@@ -92,7 +94,7 @@ Analogia que vi num vídeo e ajudou a fixar: os arquivos/programas são como liv
 
 ## Controle de versão — de onde veio o Git
 
-Isso eu não sabia: o Git foi criado em **2005** pelo Linus Torvalds, o mesmo cara que criou o kernel do Linux. Antes disso a comunidade do kernel usava o **BitKeeper** como sistema de controle de versão, mas rolou um rompimento de relações e o Linus resolveu criar o próprio sistema, usando a experiência que teve com o BitKeeper.
+Isso eu não sabia: o Git foi criado em **2005** pelo Linus Torvalds, o mesmo cara que criou o kernel do Linux. Antes disso a comunidade do kernel usava o **BitKeeper** como sistema de controle de versão, mas a experiência com a ferramenta não tava boa (faltava engajamento da equipe, o processo não fluía), então o Linus resolveu criar o próprio sistema, usando a experiência que teve com o BitKeeper.
 
 As metas dele eram: velocidade, suporte a desenvolvimento não-linear, ser distribuído e conseguir lidar com projetos grandes de forma eficiente. Hoje o Git é o sistema de controle de versão mais usado do mundo.
 
@@ -101,7 +103,7 @@ As metas dele eram: velocidade, suporte a desenvolvimento não-linear, ser distr
 - **Repositório** → diretório onde ficam os arquivos do projeto (código, imagem, o que for). Pode ser local (na minha máquina) ou remoto (GitHub, GitLab, Bitbucket, Azure DevOps).
 - **Branch** → uma ramificação do código. Serve pra eu desenvolver uma feature sem mexer direto na versão que já tá funcionando em produção.
 - **Commit** → um conjunto de alterações salvo, com autor, mensagem e um hash único. É esse hash que deixa eu voltar pra um ponto específico do histórico.
-- **Pull Request** → o pedido que eu faço pro dono do repositório aceitar minhas alterações no projeto oficial.
+- **Pull Request** → o pedido que eu faço pro dono do repositório aceitar minhas alterações no projeto oficial (pedido de merge entre branches).
 - **Clone** → cópia local de um repositório remoto, pra eu trabalhar nele e depois mandar as alterações de volta.
 - **Fork** → um repositório novo, independente, que copia o "upstream" original. Usado quando não tenho permissão de escrita no projeto original (comum em open source).
 
@@ -112,8 +114,8 @@ O modelo de branches que a aula usou como referência:
 - `main` → versão estável, em produção
 - `develop` → onde as features vão sendo integradas
 - `feature/*` → desenvolvimento de funcionalidade nova
-- `release/*` → preparação de uma versão
-- `hotfix/*` → correção urgente aplicada direto em cima da `main`
+- `release/*` → preparação de uma versão (branch mais "descartável", depende da maturidade do projeto/cliente se ela existe ou não)
+- `hotfix/*` → correção urgente aplicada direto em cima da `main` (e depois também replicada pra `develop`, pra não ficar desalinhada)
 
 ## Como o repositório local conversa com o remoto
 
@@ -122,10 +124,12 @@ Workspace → Index/Staging → Local Repository → Remote Repository
 ```
 
 - `git init` / `git clone` inicializam o repositório
-- `git pull` / `git fetch` trazem o que mudou no remoto
+- `git pull` / `git fetch` trazem o que mudou no remoto (`pull` já atualiza o workspace também; `fetch` só atualiza o repositório local, sem mexer no que eu tô editando)
 - `git add` / `git commit` registram mudança localmente
 - `git push` manda o commit local pro remoto
 - `git checkout` / `git diff` navegam e comparam versões
+
+O repositório local e o remoto **não são sincronizados automaticamente** — o clone cria uma referência, mas depois é preciso `pull`/`push` manualmente pra manter os dois alinhados.
 
 ## Comandos de Git que testei
 
@@ -152,12 +156,12 @@ git checkout -b feature/login # cria e já muda pra branch
 
 **Alterações**
 ```bash
-git status                 # o que mudou
+git status                 # o que mudou (mostra untracked/"??" pra arquivo novo e modified/"M" pra arquivo já rastreado que mudou)
 git add arquivo.txt        # manda arquivo pra staging area
 git add .                  # manda tudo pra staging area
-git reset                  # volta staging pro último commit (--hard reseta workspace também, cuidado)
+git reset                  # volta staging pro último commit, mantendo o que tá no workspace (--hard reseta workspace também, cuidado)
 git revert <hash>          # desfaz um commit criando outro commit (bom pra histórico remoto/público)
-git restore arquivo.txt    # descarta alteração não commitada
+git restore arquivo.txt    # descarta alteração não commitada, volta pro estado do último commit
 git diff                   # diferença entre workspace e staging
 ```
 
@@ -171,10 +175,11 @@ git shortlog                   # histórico agrupado por autor
 git reflog                     # histórico de ações no repositório
 ```
 
-**Sincronização**
+**Sincronização e integração**
 ```bash
-git push -u origin feature/login  # manda a branch pro remoto
+git push -u origin feature/login  # manda a branch pro remoto (primeira vez precisa do -u/set-upstream)
 git pull origin main               # traz o que mudou na main
+git merge nome-da-branch           # mescla uma branch na branch atual (é isso que o botão "merge" do GitHub faz por trás dos panos ao aceitar um PR)
 ```
 
 ## .gitignore
@@ -185,16 +190,16 @@ Arquivo simples que diz pro Git quais arquivos/pastas ele nunca deve versionar. 
 - **Limpeza** → não polui o repositório com pasta de biblioteca tipo `venv/` ou `node_modules/`
 - **Performance** → só o código essencial é versionado, deixando `push`/`pull` mais rápido
 
-Deixei um exemplo pronto em [`.gitignore.example`](./.gitignore.example) (é só renomear pra `.gitignore` na raiz do projeto).
+Deixei um exemplo pronto em [`.gitignore.example`](./.gitignore.example) (é só renomear pra `.gitignore` na raiz do projeto). Quando eu crio um repositório novo direto no GitHub, ele já oferece pra gerar um `.gitignore` padrão junto com o README.
 
 ## Pra lembrar depois
 - Terminal hoje é um programa que emula a máquina antiga; Shell é quem faz a ponte com o Kernel
-- BASH é o shell padrão do Linux, Powershell/CMD é do Windows
+- CLI x GUI são formas de interface; Bash (Linux) x PowerShell/CMD (Windows) são os tipos de shell
 - Telnet (porta 23) não criptografa; SSH (porta 22) criptografa — por isso SSH substituiu o Telnet
 - RAM guarda o que tá em uso agora e some ao desligar; disco rígido guarda tudo por longo prazo, mesmo sem energia
-- O Git nasceu em 2005 por causa do rompimento com o BitKeeper
-- Branch ramifica o código, commit salva o estado, pull request pede pra integrar
-- Fluxo local: Workspace → Staging → Local Repository → Remote Repository
+- O Git nasceu em 2005 por causa da experiência ruim com o BitKeeper
+- Branch ramifica o código, commit salva o estado, pull request pede pra integrar, merge de fato junta as branches
+- Fluxo local: Workspace → Staging → Local Repository → Remote Repository (não sincroniza sozinho, precisa de pull/push)
 - `.gitignore` é essencial pra não subir segredo nem lixo pro repositório
 - Rodar `git status` sempre antes de commitar evita surpresa
 
