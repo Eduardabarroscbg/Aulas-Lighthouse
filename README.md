@@ -4,7 +4,7 @@
   </summary>
   <br>
   <img src="./assets/certificado.png" alt="Certificado Ciclo Básico Lighthouse" width="600">
-</details>
+</details>.
 
 <div class="hero-image">
     <div class="frame">
