@@ -4,7 +4,7 @@
     </div>
 </div>
 
-# Módulo 7 - Fundamentos de Cloud e Bancos de Dados
+# Módulo 7 - Fundamentos de Cloud e Bancos de Dado
 
 Este módulo teve duas aulas com instrutores diferentes. Anotações de cada uma abaixo:
 - **Aula 1** — Fundamentos da Computação em Nuvem (Bruno Schaden)
