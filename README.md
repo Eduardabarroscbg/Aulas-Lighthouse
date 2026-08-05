@@ -1,4 +1,4 @@
-[![Certificado](https://img.shields.io/badge/📜_Certificado-2E86DE?style=for-the-badge)](./assets/certificado.png)
+[![Certificado](https://img.shields.io/badge/📜_Meu Certificado-2E86DE?style=for-the-badge)](./assets/certificado.png)
 
 <div class="hero-image">
     <div class="frame">
