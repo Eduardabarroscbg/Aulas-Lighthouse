@@ -6,7 +6,7 @@
 
 # Módulo 2 - Introdução à Programação
 
-Anotações da aula sobre os fundamentos de programação. Instrutora: Yasmim Lima (Data Engineer na Indicium).
+Anotações da aula sobre os fundamentos de programação. Instrutora: [Yasmim Lima](https://www.linkedin.com/in/yasmim-abrahao/), Data Engineer na Indicium.
 
 ## O que aprendi
 
@@ -284,3 +284,9 @@ elif idade == 17:
 else:
     print("Você pode entrar na montanha-russa.")
 ```
+## Créditos
+
+Conteúdo baseado na aula ministrada por **Yasmim Lima**, Data Engineer na Indicium.
+
+- 🔗 [LinkedIn](https://www.linkedin.com/in/yasmim-abrahao/)
+- 💻 [GitHub](https://github.com/TinyHero13)
