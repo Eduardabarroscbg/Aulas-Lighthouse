@@ -6,7 +6,7 @@
 
 # Módulo 3 - Introdução à SQL
 
-Anotações da aula sobre os fundamentos de SQL. Instrutora: Corina Bachmann (Team Lead Analytics Engineer na Indicium). Ela mesma contou que entrou na Indicium pelo próprio Lighthouse em 2024, numa transição de carreira, e foi ali que aprendeu praticamente tudo que sabe sobre dados hoje — o que dá uma motivada extra pra levar essa fase a sério.
+Anotações da aula sobre os fundamentos de SQL. Instrutora: [Corina Bachmann](https://www.linkedin.com/in/corina-pezzini-bachmann/), Team Lead Analytics Engineer na Indicium. Ela mesma contou que entrou na Indicium pelo próprio Lighthouse em 2024, numa transição de carreira, e foi ali que aprendeu praticamente tudo que sabe sobre dados hoje — o que dá uma motivada extra pra levar essa fase a sério.
 
 ## Ferramenta usada
 
@@ -215,3 +215,8 @@ limit 3;
 - `JOIN` combina colunas, `UNION` empilha linhas (e as colunas do union precisam ter mesmo nome e tipo)
 - `AS` só renomeia a coluna no retorno, não altera o dado
 - Nem todo banco de dados suporta `FULL JOIN`
+
+  ## Créditos
+
+Conteúdo baseado na aula ministrada por **Corina Bachmann**, Team Lead Analytics Engineer na Indicium.
+- 🔗 [LinkedIn](https://www.linkedin.com/in/corina-pezzini-bachmann/)
