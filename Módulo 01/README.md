@@ -6,7 +6,7 @@
 
 # Módulo 1 - Introdução ao Programa Lighthouse
 
-Anotações da aula de abertura, onde a Indicium AI explicou como funciona o programa Lighthouse, o Ciclo Preparatório e o processo seletivo. Instrutora: Mirthes Koch Schmitz (L&D Manager na Indicium AI).
+Anotações da aula de abertura, onde a Indicium AI explicou como funciona o programa Lighthouse, o Ciclo Preparatório e o processo seletivo. Instrutora: [Mirthes Koch Schmitz](https://www.linkedin.com/in/mirthes-koch-schmitz-193230184/) (L&D Manager na Indicium AI).
 
 ## Por que eu tô aqui
 
@@ -36,3 +36,8 @@ Um ponto que gostei: eles disseram que ferramenta muda toda hora, então o foco 
 Tem duas trilhas possíveis:
 - **Dados & AI** (Data Science, Data Engineering, AI Engineering, Analytics Engineering, Data Analytics)
 - **Negócios** (Gestão de Projetos, Consultoria, BizDev)
+
+## Créditos
+
+Conteúdo baseado na aula ministrada por **Mirthes Koch Schmitz**, L&D Manager na Indicium AI.
+- 🔗 [LinkedIn](https://www.linkedin.com/in/mirthes-koch-schmitz-193230184/)
