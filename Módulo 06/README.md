@@ -5,7 +5,7 @@
 </div>
 
 # Módulo 6 - Introdução e utilização de GenAI
-Anotações da aula sobre Inteligência Artificial Generativa (GenAI) e como ela se encaixa no dia a dia de quem trabalha com dados. Instrutor: Pedro Muracchini, Team Lead / AI Engineer na Indicium.
+Anotações da aula sobre Inteligência Artificial Generativa (GenAI) e como ela se encaixa no dia a dia de quem trabalha com dados. Instrutor: [Pedro Muracchini](https://www.linkedin.com/in/pedro-muracchini/), Team Lead / AI Engineer na Indicium.
 
 ## O que já era esperado como pré-requisito
 
@@ -276,3 +276,8 @@ Testei com dois prompts pra ver a diferença de comportamento:
 - Um bom prompt tem 4 pilares: Persona, Contexto, Tarefa e Formato
 - Gems (e equivalentes como Skills, no Claude) são úteis pra reaproveitar instruções recorrentes
 - Próxima aula: fundamentos de bancos de dados e cloud (criação/manipulação de tabelas em banco relacional e consultas SQL de negócio)
+
+## Créditos
+
+Conteúdo baseado na aula ministrada por **Pedro Muracchini**, Team Lead / AI Engineer na Indicium.
+- 🔗 [LinkedIn](https://www.linkedin.com/in/pedro-muracchini/)
