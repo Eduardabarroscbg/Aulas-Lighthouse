@@ -6,7 +6,7 @@
 
 # Módulo 9 - Visão Geral de Projetos
 
-Anotações da aula sobre gestão de projetos no contexto de dados e IA: o papel do gestor, os pilares do dia a dia, metodologias, o ciclo de vida de um projeto e a hierarquia de demandas. Instrutora: Giulia Platt, Project Manager na Indicium.
+Anotações da aula sobre gestão de projetos no contexto de dados e IA: o papel do gestor, os pilares do dia a dia, metodologias, o ciclo de vida de um projeto e a hierarquia de demandas. Instrutora: [Giulia Platt](https://www.linkedin.com/in/giulia-platt-maffezzolli/), Project Manager na Indicium.
 
 ## O que aprendi
 
@@ -211,3 +211,8 @@ Com o cliente, isso se traduz em quatro ações concretas:
 - A hierarquia de demandas vai de épico → feature → user story → task, do estratégico ao operacional
 - Sucesso em projetos de dados/IA é 40% técnica e 60% alinhamento de expectativas com o stakeholder
 - Modelos de IA são probabilísticos, não determinísticos — educar o cliente sobre isso evita que uma boa entrega seja vista como fracasso
+
+## Créditos
+
+Conteúdo baseado na aula ministrada por **Giulia Platt**, Project Manager na Indicium.
+- 🔗 [LinkedIn](https://www.linkedin.com/in/giulia-platt-maffezzolli/)
