@@ -6,7 +6,7 @@
 
 # Módulo 5 - Fundamentos de Controle de Versão
 
-Anotações da aula sobre terminal, bash e controle de versão com Git. Instrutor: Luis Henrique (Luisinho), Coordenador da área de Engenharia de Dados na Indicium (ex-aluno do Lighthouse em 2023).
+Anotações da aula sobre terminal, bash e controle de versão com Git. Instrutor: [Luis Henrique (Luisinho)](https://www.linkedin.com/in/luishenriquebs/), Coordenador da área de Engenharia de Dados na Indicium (ex-aluno do Lighthouse em 2023).
 
 ## O que aprendi
 
