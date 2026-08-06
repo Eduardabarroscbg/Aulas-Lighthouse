@@ -13,7 +13,7 @@ Este módulo teve duas aulas com instrutores diferentes. Anotações de cada uma
 ---
 
 # Módulo 7 - Aula 1 - Fundamentos da Computação em Nuvem
-Anotações da aula sobre os fundamentos de Cloud Computing: definição técnica, características essenciais, modelos de serviço e de implantação, e como isso se aplica no dia a dia de quem trabalha com dados. Instrutor: Bruno Schaden, Team Lead Analytics Engineer na Indicium (formado em Economia, mais de 3 anos de Indicium, já passou por projetos nas verticais financeira, saúde e transporte/logística).
+Anotações da aula sobre os fundamentos de Cloud Computing: definição técnica, características essenciais, modelos de serviço e de implantação, e como isso se aplica no dia a dia de quem trabalha com dados. Instrutor: [Bruno Schaden](https://www.linkedin.com/in/bruno-schaden/), Team Lead Analytics Engineer na Indicium (formado em Economia, mais de 3 anos de Indicium, já passou por projetos nas verticais financeira, saúde e transporte/logística).
 
 ## O que já era esperado como pré-requisito
 
@@ -126,7 +126,7 @@ Curiosidade citada em aula: a Amazon apostou nesse modelo desde ~2004/2005 ("con
 ---
 
 # Módulo 7 - Aula 2 - Fundamentos de Bancos de Dados e Modelagem
-Anotações da aula sobre fundamentos e conceitos de modelagem de bancos de dados: histórico, tipos de dados, SGBDs, banco de dados relacional, data warehouses e modelos de entidade-relacionamento/normalização. Instrutor: Henrique Lucas, AI Engineer na Indicium (bacharel em Engenharia de Software pela UTFPR, ~1 ano de Indicium, já participou de projetos com IA generativa e deu palestras sobre o tema).
+Anotações da aula sobre fundamentos e conceitos de modelagem de bancos de dados: histórico, tipos de dados, SGBDs, banco de dados relacional, data warehouses e modelos de entidade-relacionamento/normalização. Instrutor: [Henrique Lucas](https://www.linkedin.com/in/henrique-blucas/), AI Engineer na Indicium (bacharel em Engenharia de Software pela UTFPR, ~1 ano de Indicium, já participou de projetos com IA generativa e deu palestras sobre o tema).
 
 ## O que já era esperado como pré-requisito
 
@@ -316,3 +316,9 @@ A escolha entre os dois é uma decisão de design que deveria ser pensada já no
 
 ## Referências
 - Definição de banco de dados: Oracle
+
+  ## Créditos
+
+Conteúdo baseado nas aulas ministradas por:
+- **Bruno Schaden**, Team Lead Analytics Engineer na Indicium — [LinkedIn](https://www.linkedin.com/in/bruno-schaden/)
+- **Henrique Lucas**, AI Engineer na Indicium — [LinkedIn](https://www.linkedin.com/in/henrique-blucas/)
