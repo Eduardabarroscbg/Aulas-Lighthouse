@@ -206,3 +206,9 @@ Deixei um exemplo pronto em [`.gitignore.example`](./.gitignore.example) (é só
 ## Referências
 - [Learn Git Branching](https://learngitbranching.js.org/) — simulador interativo pra praticar Git
 - [Documentação oficial do Git](https://git-scm.com/doc)
+
+  ## Créditos
+Conteúdo baseado na aula ministrada por **Luis Henrique (Luisinho)**, Coordenador de Engenharia de Dados na Indicium.
+ 
+- 🔗 [LinkedIn](https://www.linkedin.com/in/luishenriquebs/)
+- 💻 [GitHub](https://github.com/luis-indicium)
