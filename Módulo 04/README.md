@@ -6,7 +6,7 @@
 
 # Módulo 4 - Introdução a Python
 
-Anotações das duas aulas de introdução a Python (recapitulação, funções, pseudocódigo, módulos, Pandas, debugging, classes e organização de projetos). Instrutor: Duarte Junior (AI Engineer na Indicium).
+Anotações das duas aulas de introdução a Python (recapitulação, funções, pseudocódigo, módulos, Pandas, debugging, classes e organização de projetos). Instrutor: [Duarte Junior](https://www.linkedin.com/in/duarte-junior-9530595a/), AI Engineer na Indicium.
 
 ## Ferramenta usada
 
@@ -268,3 +268,11 @@ Pasta [`aula 2`](./aula%202):
 - `dict.get(key, padrao)` é mais seguro que `dict[key]` quando a chave pode não existir
 - `int()` trunca, não arredonda — cuidado ao converter float pra int
 - Dever de casa pendente: pesquisar sobre operator precedence
+
+## Créditos
+
+Conteúdo baseado nas aulas ministradas por **Duarte Junior**, AI Engineer na Indicium.
+
+- 🔗 [LinkedIn](https://www.linkedin.com/in/duarte-junior-9530595a/)
+- 💻 [GitHub](https://github.com/duartejr)
+ 
