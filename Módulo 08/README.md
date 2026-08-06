@@ -152,3 +152,7 @@ Essas perguntas praticamente definem toda a arquitetura da solução, então val
 - [AWS - O que é um pipeline de dados](https://aws.amazon.com/pt/what-is/data-pipeline/)
 - [Apache Airflow](https://airflow.apache.org/)
 - [Databricks Workflows](https://www.databricks.com/product/workflows)
+
+## Créditos
+Conteúdo baseado na aula ministrada por **Arthur Cerqueira Farias**, Data Engineer na Indicium.
+- 🔗 [LinkedIn](https://www.linkedin.com/in/arthur-cerqueira-665626226/)
