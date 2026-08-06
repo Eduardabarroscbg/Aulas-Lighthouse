@@ -6,7 +6,7 @@
 
 # Módulo 10 - Soft Skills e a Preparação para Entrevistas
 
-Anotações da última aula do ciclo preparatório: diferença entre hard e soft skills, o tripé de competências (CHA), como isso vira cultura na Indicium, a jornada de soft skills do Lighthouse e o guia bônus de preparação para entrevistas remotas. Instrutora: Larissa Pereira, Talent Development Team Leader na Indicium (psicóloga, ex-líder de recrutamento e seleção do Lighthouse).
+Anotações da última aula do ciclo preparatório: diferença entre hard e soft skills, o tripé de competências (CHA), como isso vira cultura na Indicium, a jornada de soft skills do Lighthouse e o guia bônus de preparação para entrevistas remotas. Instrutora: [Larissa Pereira](https://www.linkedin.com/in/llarissapereira/), Talent Development Team Leader na Indicium (psicóloga, ex-líder de recrutamento e seleção do Lighthouse).
 
 ## O que aprendi
 
@@ -167,3 +167,7 @@ Se tudo isso estiver ok, é só respirar fundo (vale pesquisar sobre respiraçã
 - Preparar-se bem tecnicamente (internet, áudio, vídeo, ambiente) evita que problemas de conexão atrapalhem a fluidez da conversa
 - Autenticidade > respostas decoradas: ninguém espera que você saiba tudo, e sim que seja transparente e queira aprender
 - Usar o método STAR (Situação, Tarefa, Ação, Resultado) ajuda a estruturar exemplos práticos e reais durante a entrevista
+
+## Créditos
+Conteúdo baseado na aula ministrada por **Larissa Pereira**, Talent Development Team Leader na Indicium.
+- 🔗 [LinkedIn](https://www.linkedin.com/in/llarissapereira/)
