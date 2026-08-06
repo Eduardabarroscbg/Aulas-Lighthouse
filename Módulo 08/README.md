@@ -6,7 +6,7 @@
 
 # Módulo 8 - Introdução à Engenharia de Dados
 
-Anotações da aula sobre os fundamentos da engenharia de dados: pipelines, ingestão, ETL vs ELT, orquestração e o papel do engenheiro de dados no dia a dia. Instrutor: Arthur Cerqueira Farias, Data Engineer na Indicium (migrou de carreira, veio da área de frontend).
+Anotações da aula sobre os fundamentos da engenharia de dados: pipelines, ingestão, ETL vs ELT, orquestração e o papel do engenheiro de dados no dia a dia. Instrutor: [Arthur Cerqueira Farias](https://www.linkedin.com/in/arthur-cerqueira-665626226/), Data Engineer na Indicium (migrou de carreira, veio da área de frontend).
 
 ## O que aprendi
 
